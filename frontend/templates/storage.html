@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="\static\home.css">
+    <title>Files</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="abc"><img src="\static\logo.png" class="log"> </div>
+        <div class="icon">
+            <h2 class="logo">IndianHealthNetwork</h2>
+        </div>            
+        <div class="menu">
+            <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'profile' %}">My Profile</a></li>
+            </ul>
+        </div>
+    </div>  
+    <br>
+    <center><h1>Your Files</h1></center>
+    <br>
+    <table width="100%">
+        <tr>
+      <td>
+        <table  style="border-collapse: collapse; border: 2px solid black; margin-left: 10px; border-radius: 8px; width :100%">
+            <caption><h2>Prescription Files</h2></caption>
+            <tr>
+                <td>
+                <table>
+                    <tr>
+                    <h3 style="text-align:center;">File Name</h3>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="container">
+                        <div class="row">
+                            {% for i in usera.pfile_names %}
+                            <div class="col-md-4">
+                                <div class="card">
+                                 <p style="text-align:center ;">{{i}}</p><br>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </tr>
+                </table>
+                </td>
+                <td>
+                <table>
+                    <tr>
+                    <h3 style="text-align:center; padding-top:10px"> Prescriptions</h3>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="container">
+                        <div class="row">
+                            {% for i in usera.prescriptions_urls %}
+                            <div class="col-md-4">
+                                <div class="card">
+                                   <center><a href= '{{i}}' >View</a></center>
+                                    <br>
+                                   
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </tr>
+                </table>
+                </td>
+                <td>
+                <table>
+                    <tr>
+                    <h3 style="text-align:center; padding-top:10px;">Upload-Time</h3>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="container">
+                        <div class="row">
+                            {% for i in usera.prescriptions_times %}
+                            <div class="col-md-4">
+                                <div class="card">
+                                   <p style="text-align:center ;">{{i}}</p><br>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </tr>
+                </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+    <td style="padding-left:12px ;"> 
+    <table style="border-collapse: collapse; border: 2px solid black; margin-left: 10px; border-radius: 8px; width:100%">
+    <caption><h2>Other Files</h2></caption>
+    <tr>
+    <td>
+        <h3 style="text-align:center; ">File Name</h3>
+        <br>
+        <hr>
+        <br>
+        <div class="container">
+            <div class="row">
+                {% for i in usera.ofile_names %}
+                <div class="col-md-4">
+                    <div class="card">
+                       <p style="text-align:center ;">{{i}}</p> <br>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    
+    </td>
+    <td>
+        <h3 style="text-align:center; ">Download</h3>
+        <br>
+        <hr>
+        <br>
+        <div class="container">
+            <div class="row">
+                {% for i in usera.others_urls %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <p style="text-align:center ;"><a href="{{i}}" target="_blank">View</a></p><br>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </td>
+    <td>
+        <h3 style="text-align:center; ">Upload-Time</h3>
+        <br>
+        <hr>
+        <br>
+        <div class="container">
+            <div class="row">
+                {% for i in usera.others_times %}
+                <div class="col-md-4">
+                    <div class="card">
+                       <p style="text-align:center ;">{{i}}</p> <br>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </td>
+    </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
+</body>
+</html>

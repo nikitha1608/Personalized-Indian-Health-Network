@@ -1,0 +1,172 @@
+<html>
+    <head>
+        <title>Profile | IndianHealthNetwork</title>
+        <link rel="icon" href="\static\logo.png" type="image">
+        <link rel="stylesheet" type="text/css" href="\static\home.css">
+        
+        <link rel="stylesheet" type="text/css" href="\static\profile.css">
+    </head>
+    <body>
+        <div class="main">
+            <div class="navbar">
+                <div class="abc"><img src="\static\logo.png" class="log"> </div>
+                <div class="icon">
+                    <h2 class="logo">IndianHealthNetwork</h2>
+                </div>            
+                <div class="menu">
+                    <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'login' %}">Logout</h3></a></li>
+                    </ul>
+                </div>
+            </div>  
+                <p class="love" style="font-size: 40px ;text-align: center;">My Profile</p>
+                <table  width="100%">
+                    <tr>
+                        <td>
+                            <div class="image">
+                                <center><img src="/static/logo.png" width="300px" class="profile"></center>
+                            </div>
+                        </td>
+                        <td >
+                            <table width="400px">
+                                <caption><h2>Recommendations</h2></caption>
+                                <tr>
+                                    <th>
+                                        User Id
+                                        <hr>
+                                    </th>
+                                    <th>
+                                        Email
+                                        <hr>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {% for user in usera.cluster_users %}
+                                   {{user}}<br>
+                                        {% endfor %}
+                                    </td>
+                                    <br>
+                                    <td>
+                                        {% for eml in usera.cluster_emails %}
+                                    : {{eml}}<br>
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <form action="/refresh" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="username" value="{{usera.Username}}"><br>
+                                <input type="submit" name="refresh" value="Refresh">
+                            </form>
+                            <form action="/visualize" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="username" value="{{usera.Username}}"><br>
+                                <input type="submit" name="Visualize" value="Visualize">
+                            </form>
+                            <form action="/files" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="username" value="{{usera.Username}}"><br>
+                                <input type="submit" name="files" value="Files">
+                            </form>
+                        </div>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <p style="margin: 0; font-size: xx-large; ">Personal Details</p>
+        <div class="Details">
+        <table class="personal">
+            <tr>
+                <td>
+                    <table width="700px" class="tablea">
+                        <tr>
+                            <td>Full Name </td>
+                            <td>: {{usera.Full_Name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Gender </td>
+                            <td>: {{usera.Gender}}</td>
+                        </tr>
+                        <tr>
+                            <td>Username </td>
+                            <td>: {{usera.Username}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email Id </td>
+                            <td>: {{usera.Email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth </td>
+                            <td>: {{usera.DateOfBirth}}</td>
+                        </tr>
+                        <tr>
+                            <!-- <td>Age</td>
+                            <td></td> -->
+                        </tr>
+                        <tr>
+                            <td>Blood Group </td>
+                            <td>: {{usera.BloodGroup}}</td>
+                        </tr>
+                        <tr>
+                            <td>Health problems </td>
+                            <td>: {{usera.health_problems}}</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>   
+        </table>
+        </div>
+        <div class="user">
+        
+            <table width="100%">
+                <tr>
+                    <td>
+                        <form enctype="multipart/form-data" action="/storage" method="POST">
+                            {% csrf_token %}
+                        <h3>Upload the Medical Prescriptions</h3>
+                        <input type="hidden" name="username" value="{{usera.Username}}"><br>
+                        <label><input type="file" name="p_image" id="file" class="inputfile" /></label><br>
+                        <input type="text" name="file_name" placeholder="Save as (File Name)"><br>
+                        <select name="folder" id="Healthprob-select">
+                            <option value="">--Please choose file type--</option>
+                            <option value="prescriptions">Prescriptions</option>
+                            <option value="Other Files">Other-Files</option>
+                        </select>
+                        <br>
+                        <input type="submit" value="Upload">
+                        </form>
+                       
+                        <br>
+                    </td>
+                    <td>
+                        <form action="/Data" method="POST">
+                            {% csrf_token %}
+                        <h3>Update today's Readings :</h3>
+                        <input type="hidden" name="username" value="{{usera.Username}}"><br>
+                        <h2>Choose what to Update</h2>
+                        <select name="readings" id="Healthprob-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="Blood Pressure">Blood Pressure</option>
+                            <option value="Blood Sugar">Blood Sugar</option>
+                            <option value="Heart Rate">Heart Rate</option>
+                            <option value="Weight">Weight</option>
+                        </select>
+                        <br>
+                        <input type="text" name="value" placeholder="Enter the value" class="inputfile" required><br>
+                        <input type="submit" value="Update">
+                        <br>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+    </div>
+</div>
+<div>
+    <br>
+    </body>
+</html>

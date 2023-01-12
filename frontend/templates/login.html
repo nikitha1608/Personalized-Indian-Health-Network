@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LogIn | IndianHealthNetwork</title>
+    <link rel="icon" href="\static\logo.png" type="image">
+    <link rel="stylesheet" type="text/css" href="\static\style.css">
+    <link rel="stylesheet" type="text/css" href="\static\home.css">
+  </head>
+    <div class="main">
+        <div class="navbar">
+            <div class="abc"><img src="\static\logo.png" class="log"> </div>
+            <div class="icon">
+                <h2 class="logo">IndianHealthNetwork</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'login' %}">LogIn</a></li>
+                  <li><a href="{% url 'signin' %}">SignUp</a></li>
+                </ul>
+            </div>
+        </div>  
+    </div>
+
+  <body>
+    <br><br><br><br><br><br><br><br>
+    <div class="login-box">
+      <h1>LogIn</h1> <br>
+      <h4 class="id"><marquee behavior="scroll" direction="left">We missed you.. <br> Welcome back!</marquee></h4>
+
+      <form action="/login" method="POST">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" placeholder="Enter your Username" name="username"/>
+        <label>Email</label>
+        <input type="email" placeholder="Enter your Email" id="e_mail" name="email" />
+        <label>Password</label>
+        <input type="password" placeholder="Enter Password" name="pswd1" />
+        <br>
+        <button type="submit" value="Submit" >Log In</button>
+      </form>
+
+    </div>
+    <p class="para-2" >
+      Don't have an account yet? <a href="{% url 'signin' %}">SignUp Here</a>
+    </p>
+    <br><br><br><br><br><br><br><br><br><br><br>
+  </body>
+</html>
+

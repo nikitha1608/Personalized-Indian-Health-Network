@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home | IndianHealthNetwork</title>
+    <link rel="icon" href="frontend\static\logo.png" type="image">
+    <link rel="stylesheet" type="text/css" href="\static\home.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="abc"><img src="\static\logo.png" class="log"> </div>
+            <div class="icon">
+                <h2 class="logo">IndianHealthNetwork</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'login' %}">LogIn</a></li>
+                    <li><a href="{% url 'signin' %}">SignUp</a></li>
+                    
+                </ul>
+            </div>
+        </div> 
+    </div>
+    <br><br>
+    </body>
+    <body>
+       
+    <div class="net"><marquee behavior="slide" direction="live"><img align="right" src="\static\network.jpg" width="550" height="550"></marquee></div> 
+    <br><br><br>
+    <p class="quote">"You don't have to<br> struggle in Silence.<br> You are not Alone in this."</p>
+        <br><br><br><br><br><br>
+    <p class="desc">You can be un-silent. You can live well with <br>a mental health condition, as long as you <br>open up to somebody about it.</p>
+<br><br><br><br><br><br>
+</body>
+</html>

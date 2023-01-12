@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <!--Chart js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="\static\home.css">
+    <link rel="stylesheet" type="text/css" href="\static\profile.css">
+
+    <title></title>
+  </head>
+    <body>
+        <div class="navbar">
+        <div class="abc"><img src="\static\logo.png" class="log"> </div>
+        <div class="icon">
+            <h2 class="logo">IndianHealthNetwork</h2>
+        </div>            
+        <div class="menu">
+            <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'profile' %}">My Profile</a></li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <br>
+    <center><h2>Hii! Here is your daily data Analysis</h2></center>
+    <br>
+    <br>
+<div>
+    <table width="100%">
+        <tr style="background-color: #ffffff;width:100%">
+            <td width="50%">
+                <h2 style="color: rgb(248, 2, 2); text-align: center;">Blood Pressure</h2>
+                <canvas id="myChart"></canvas>
+            </td>
+            <td width="100%">
+                <h2 style="color: rgb(248, 2, 2); text-align: center;">Blood Sugar</h2>
+                <canvas id="myChart1"></canvas>
+            </td>
+        </tr>
+        <tr style="background-color: #ffffff;">
+            <td>
+                <br>
+                <h2 style="color: rgb(248, 2, 2); text-align: center;">Heart Rate</h2>
+                <canvas id="myChart2"></canvas>
+            </td>
+            <td>
+                <br>
+                <h2 style="color: rgb(248, 2, 2); text-align: center;">Weight</h2>
+                <canvas id="myChart3"></canvas>
+            </td>
+        </tr>
+    </table>
+  </div>
+  
+  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [{% for i in chart_data.dates_bp%} '{{i}}',{% endfor %}],
+        datasets: [{
+          label: "bp level",
+          data: [{% for i in chart_data.values_bp%} '{{i}}',{% endfor %}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    const ctx1 = document.getElementById('myChart1');
+  
+    new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: [{% for i in chart_data.dates_bs%} '{{i}}',{% endfor %}],
+        datasets: [{
+          label: "blood sugar level",
+          data: [{% for i in chart_data.values_bs%} '{{i}}',{% endfor %}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    const ctx2 = document.getElementById('myChart2');
+  
+    new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: [{% for i in chart_data.dates_hr%} '{{i}}',{% endfor %}],
+        datasets: [{
+          label: "heart rate",
+          data: [{% for i in chart_data.values_hr%} '{{i}}',{% endfor %}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+
+    const ctx3 = document.getElementById('myChart3');
+  
+    new Chart(ctx3, {
+      type: 'line',
+      data: {
+        labels: [{% for i in chart_data.dates_weight%} '{{i}}',{% endfor %}],
+        datasets: [{
+          label: "Weight",
+          data: [{% for i in chart_data.values_weight%} '{{i}}',{% endfor %}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</html>

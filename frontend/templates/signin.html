@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SignUp | IndianHealthNetwork</title>
+    <link rel="icon" href="\static\logo.png" type="image">
+    <link rel="stylesheet" type="text/css" href="\static\style.css">
+    <link rel="stylesheet" type="text/css" href="\static\home.css">
+
+  </head>
+  <div class="main">
+    <div class="navbar">
+        <div class="abc"><img src="static/logo.png" class="log"> </div>
+        <div class="icon">
+            <h2 class="logo">IndianHealthNetwork</h2>
+        </div>
+
+        <div class="menu">
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'login' %}">LogIn</a></li>
+              <li><a href="{% url 'signin' %}">SignUp</a></li>
+            </ul>
+        </div>
+    </div>    
+</div>
+  <body style="background: linear-gradient(to bottom right,#1a3eaa, #a5eb82,#1a3eaa)">
+    <div class="signup-box">
+      <h1>SignUp</h1> <br>
+      <h4 class="id"><marquee behavior="scroll" direction="left">Sharing is Caring..!</marquee></h4>
+      
+      
+      
+      
+      
+      <form action="/signin" method="POST">
+        {% csrf_token %}
+        <table width="600px">
+          <tr>
+            <td>
+              <label>Username</label>
+              <input type="text" placeholder="Enter your Username" name="uname"/>
+            </td>
+            <td>
+              <label>Full Name</label>
+              <input type="text" placeholder="Enter your Full Name" name="fname" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Email Id</label>
+              <input type="email" placeholder="Enter your Email Id" name="email" />
+            </td>
+            <td>
+              <label>Date of Birth</label>
+              <input type="date" name="dob"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Password</label>
+              <input type="password" placeholder="Enter Password" name="psw" />
+            </td>
+            <td>
+              <label>Confirm Password</label>
+              <input type="password" placeholder="Confirm Password" name="cpsw" />
+            </td>
+        </table>
+
+       
+        <label><b>Gender</b></label><br>
+        <input type="radio" name="Gender" value="Male"/>Male
+        <input type="radio" name="Gender" value="Female">Female
+        <input type="radio" name="Gender" value="Others">Others
+        <input type="radio" name="Gender" value="no_mention">Prefer not to say
+        <label> <b>Blood Group</b>
+        <select id='bbox' name="bloodgroup">
+          <option>A<sup>+</sup></option>
+          <option>A<sup>-</sup></option>
+          <option>B<sup>+</sup></option>
+          <option>B<sup>-</sup></option>
+          <option>AB<sup>+</sup></option>
+          <option>AB<sup>-</sup></option>
+          <option>O<sup>+</sup></option>
+          <option>O<sup>-</sup></option>   
+        </select> </label>
+        <br>
+        <h3>Your Health Issues : </h3>
+
+        <table>
+          <tr>
+            <td>
+              <label><input type="checkbox" id="Healthproblem1" name="Healthprob[]" value="Blood Pressure">Blood Pressure</label>
+            </td>
+            <td>
+              <label><input type="checkbox" id="Healthproblem2" name="Healthprob[]" value="Diabetes">Diabetes</label>
+            </td>
+            <td>
+              <label><input type="checkbox" id="Healthproblem3" name="Healthprob[]" value="Heart Disease">Heart Disease</label>
+          </tr>
+          <tr>
+            <td>
+              <label><input type="checkbox" id="Healthproblem4" name="Healthprob[]" value="Cancer">Cancer</label>
+            </td>
+            <td>
+              <label><input type="checkbox" id="Healthproblem5" name="Healthprob[]" value="Asthma">Asthma</label>
+            </td>
+            <td>
+              <label><input type="checkbox" id="Healthproblem6" name="Healthprob[]" value="Kidney Disease">Kidney Disease</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><input type="checkbox" id="Healthproblem7" name="Healthprob[]" value="Liver Disease">Liver Disease</label>
+            </td>
+            <td>
+              <label><input type="checkbox" id="Healthproblem8" name="Healthprob[]" value="Thyroid">Thyroid</label>
+            </td>
+            <td>
+              <label><input type="checkbox" id="Healthproblem9" name="Healthprob[]" value="Arthritis">Arthritis</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><input type="checkbox" id="Healthproblem10" name="Healthprob[]" value="Depression">Depression</label>
+            </td>
+            <td>
+              <label><input type="checkbox" id="Healthproblem11" name="Healthprob[]" value="Anxiety">Anxiety</label>
+            </td>
+            <td>
+              <label><input type="checkbox" id="Healthproblem12" name="Healthprob[]" value="Obesity">Obesity</label>
+            </td>
+          </tr>
+        </table>
+        <br>
+         <pre style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">By creating an account you are accepting our <a href="{% url 'terms' %}">Terms and Conditions</a>.</pre>
+        <center><button type="submit" value="SignUp">SignUp</button></center>
+      </form>
+    </div>
+    <p class="para-2">
+      Already have an account? <a href="{% url 'login' %}">LogIn Here</a>
+      <br>
+    </p>
+    <br>
+  </body>
+</html>
